@@ -2,4 +2,10 @@
 
 require_relative 'game'
 
-Game.new
+game = Game.new
+
+game.game_loop
+
+puts
+puts 'You found it!'
+game.board.code.each { |elem| print Display.code_colors(elem) }

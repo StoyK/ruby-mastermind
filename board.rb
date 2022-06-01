@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require './display'
+require_relative 'display'
 
 # The board holds 4 pegs a.k.a the code
 class Board
   attr_reader :code, :guesses
 
   def initialize
-    @code = [2, 4, 4, 6]
+    @code = [rand(1..6), rand(1..6), rand(1..6), rand(1..6)]
     @guesses = Array.new(4, nil)
   end
 
@@ -26,6 +26,8 @@ class Board
   def count_guesses(guess)
     count_exact_guesses guess
     count_missed_guesses guess
-    @guesses
+    done_guesses = @guesses
+    @guesses = Array.new(4, nil)
+    done_guesses
   end
 end
